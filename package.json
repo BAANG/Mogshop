@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "bamazonCustomer.js",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "cli-table": "^0.3.1",
+    "inquirer": "^6.4.1",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,10 +23,5 @@
   "bugs": {
     "url": "https://github.com/BAANG/bamazon/issues"
   },
-  "homepage": "https://github.com/BAANG/bamazon#readme",
-  "dependencies": {
-    "chalk": "^2.4.2",
-    "cli-table": "^0.3.1",
-    "inquirer": "^6.4.1"
-  }
+  "homepage": "https://github.com/BAANG/bamazon#readme"
 }
