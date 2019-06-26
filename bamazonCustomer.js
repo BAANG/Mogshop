@@ -17,11 +17,10 @@ connection.connect(function (error) {
     if (error) throw error;
 
     console.log("Connected as id" + connection.threadId + "\n");
+
+    console.log(chalk.bold("\n###########################\n##Welcome to the Mogshop!##\n###########################\n\n"))
+    mainMenu();
 });
-
-console.log(chalk.bold("\n###########################\n##Welcome to the Mogshop!##\n###########################\n\n"))
-
-mainMenu();
 
 function mainMenu() {
     checkGil();
@@ -57,6 +56,7 @@ function mainMenu() {
 
             case "Exit Shop":
                 console.log(chalk.yellow("\nGet out of here then! Scram!"))
+                connection.end()
                 break;
         }
     })
@@ -102,8 +102,10 @@ function userAction(sqlResponse) {
     ]).then(function (response) {
         var itemChoice = sqlResponse[response.item_id - 1];
         // console.log("This is the item choice: " + itemChoice.Item)
-
-        if (itemChoice.Stock == 0) {
+        if (response.item_id === NaN) {
+            console.log(chalk.yellow("\nStop messing around.\n"));
+            mainMenu();
+        } else if (itemChoice.Stock == 0) {
             console.log(chalk.yellow("\nSorry, we're all sold out."));
             mainMenu();
         } else {
@@ -120,7 +122,7 @@ function userAction(sqlResponse) {
                 if (quantity > itemChoice.Stock) {
                     console.log(chalk.yellow("\nSorry, we don't have enough of that item to sell to you.\n"));
                     mainMenu();
-                } else if (userGil < itemChoice.Price * quantity){
+                } else if (userGil < itemChoice.Price * quantity) {
                     console.log(chalk.yellow("\nYou don't have enough gil! This isn't a soup kitchen!\n"));
                     mainMenu();
                 } else {
