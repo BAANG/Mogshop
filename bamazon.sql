@@ -49,7 +49,7 @@ VALUES
     ("Thief Hat", "Equipment", 1200, 12),
     ("Feather Cap", "Equipment", 320, 8),
     ("Gold Armor", "Equipment", 2550, 3),
-    ("Masamune", "Equipment", 98000, 1),
+    ("Masamune", "Equipment", 198000, 1),
     ("White Robe", "Equipment", 2400, 10),
     ("Macho Bracer", "Equipment", 5000, 20),
     ("Ribbon", "Equipment", 25000, 3),
@@ -62,6 +62,7 @@ VALUES
     ("Final Heaven", "Manuals", 62000, 1),
     ("Highwind", "Manuals", 32300, 1),
     ("Knights of the Round", "Materia", 500000, 1),
+    ("Black Materia/Meteor", "Materia", 1000000, 1),
     ("Bahamut ZERO", "Materia", 250000, 1);
 
 SELECT * FROM consumables;
