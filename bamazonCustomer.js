@@ -34,27 +34,30 @@ function mainMenu () {
     ]).then(function (response) {
         switch (response.enterShop) {
             case "Buy Consumables":
-                console.log(chalk.white("We've got a bunch of potions and curatives in stock!"))
-                openConsumables();
+                console.log(chalk.white("\nWe've got a bunch of potions and curatives in stock!"))
+                query = 'SELECT * FROM consumables'
+                openShop(query);
                 break;
     
             case "Buy Equipment":
-                console.log(chalk.white("We just restocked our inventory with some great gear!"))
-                openEquipment();
+                console.log(chalk.white("\nWe just restocked our inventory with some great gear!"))
+                query = 'SELECT * FROM equipment'
+                openShop(query);
                 break;
     
             case "Let me see your rares!":
-                console.log(chalk.white("You've got great taste! Come take a look at these rarities..."))
-                openRares();
+                console.log(chalk.white("\nYou've got great taste! Come take a look at these rarities..."))
+                query = 'SELECT * FROM rares'
+                openRares(query);
                 break;
         }
     })
 }
 
 
-function openConsumables() {
-    var query = connection.query(
-        "SELECT * FROM consumables",
+function openShop(query) {
+    connection.query(
+        query,
         function (error, response) {
             if (error) throw error;
 
@@ -72,3 +75,4 @@ function openConsumables() {
         }
     )
 }
+
