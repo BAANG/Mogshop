@@ -39,14 +39,20 @@ VALUES
     ("Echo Grass", "Curatives", 50, 99),
     ("Gold Needle", "Curatives", 500, 40),
     ("Remedy", "Curatives", 1500, 20),
+    ("Tent", "Curatives", 500, 50),
     ("Phoenix Down", "Curatives", 800, 15);
     
 INSERT INTO equipment (Item, Category, Price, Stock)
 VALUES
     ("Ultima Weapon", "Equipment", 163000, 1),
+    ("Mithril Dagger", "Equipment", 3400, 20),
+    ("Thief Hat", "Equipment", 1200, 12),
     ("Feather Cap", "Equipment", 320, 8),
     ("Gold Armor", "Equipment", 2550, 3),
     ("Masamune", "Equipment", 98000, 1),
+    ("White Robe", "Equipment", 2400, 10),
+    ("Macho Bracer", "Equipment", 5000, 20),
+    ("Ribbon", "Equipment", 25000, 3),
     ("Leather Boots", "Equipment", 550, 25);
     
 INSERT INTO rares (Item, Category, Price, Stock)
@@ -57,3 +63,7 @@ VALUES
     ("Highwind", "Manuals", 32300, 1),
     ("Knights of the Round", "Materia", 500000, 1),
     ("Bahamut ZERO", "Materia", 250000, 1);
+
+SELECT * FROM consumables;
+SELECT * FROM equipment;
+SELECT * FROM rares;
