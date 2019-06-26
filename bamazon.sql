@@ -1,15 +1,15 @@
 DROP DATABASE IF EXISTS bamazon_db;
 CREATE DATABASE bamazon_db;
-USE DATABASE bamazon_db;
+USE bamazon_db;
 
 CREATE TABLE mogshop (
     id INTEGER NOT NULL AUTO_INCREMENT,
     Item VARCHAR(45) NOT NULL,
     Category VARCHAR(45) NOT NULL,
-    Price INTEGER(1000, 2),
-    Stock INTEGER(100),
+    Price INTEGER(25) NOT NULL,
+    Stock INTEGER(25) NULL,
     PRIMARY KEY (id)
-)
+);
 
 INSERT INTO mogshop (Item, Category, Price, Stock)
 VALUES
@@ -32,4 +32,4 @@ VALUES
     ("Final Heaven", "Manuals", 62000, 1),
     ("Highwind", "Manuals", 32300, 1),
     ("Knights of the Round", "Materia", 500000, 1),
-    ("Bahamut ZERO", "Materia", 250000, 1),
+    ("Bahamut ZERO", "Materia", 250000, 1)
