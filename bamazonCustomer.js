@@ -23,7 +23,7 @@ console.log("\n###########################\n##Welcome to the Mogshop!##\n#######
 
 mainMenu();
 
-function mainMenu () {
+function mainMenu() {
     inquirer.prompt([
         {
             type: 'list',
@@ -38,13 +38,13 @@ function mainMenu () {
                 query = 'SELECT * FROM consumables'
                 openShop(query);
                 break;
-    
+
             case "Buy Equipment":
                 console.log(chalk.white("\nWe just restocked our inventory with some great gear!"))
                 query = 'SELECT * FROM equipment'
                 openShop(query);
                 break;
-    
+
             case "Let me see your rares!":
                 console.log(chalk.white("\nYou've got great taste! Come take a look at these rarities..."))
                 query = 'SELECT * FROM rares'
@@ -70,9 +70,53 @@ function openShop(query) {
                     [response[i].id, response[i].Item, response[i].Category, response[i].Price + " gil", "x" + response[i].Stock]
                 );
             }
+
             console.log(table.toString() + "\n");
             console.log("You currently have: " + chalk.inverse(userGil) + " gil\n")
+            userAction(response);
+
         }
     )
 }
+
+function userAction(sqlResponse) {
+    inquirer.prompt([
+        {
+            type: 'number',
+            name: 'item_id',
+            message: 'What would you like? [Enter the item ID#] '
+        }
+    ]).then(function (response) {
+        var itemChoice = sqlResponse[response.item_id - 1];
+        
+        if (itemChoice.Stock = 0) {
+            console.log("\nSorry, we're all sold out.");
+            mainMenu();
+        } else {
+            inquirer.prompt([
+                {
+                    type: 'number',
+                    name: 'quantity',
+                    message: '\nHow many would you like to buy?'
+                }
+            ]).then(function (response) {
+                var quantity = response.quantity
+                
+                if (quantity > itemChoice.Stock || userGil < itemChoice.Price*quantity) {
+                    console.log("\nSorry, we don't have enough of that item to sell to you.");
+                    mainMenu();
+                } else {
+                    inquirer.prompt([
+                        {
+                            type: 'confirm',
+                            name: 'confirm',
+                            message: "You'd like to buy " + quantity + "x " + itemChoice.Item + "(s), Correct?"
+                        }
+                    ])
+                }
+            })
+        }
+    })
+}
+
 
